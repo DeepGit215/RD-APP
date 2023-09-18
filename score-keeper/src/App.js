@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+
+
 import './App.css';
+import ScoreButton from './components/ScoreButton';
+import ScoreCard from './components/ScoreCard';
+import CommentryBox from './components/CommentryBox';
+import { useState } from 'react';
 
 function App() {
+const [score,setScore]=useState(0);
+const [wicket,setWicket]=useState(0);
+const handleScore=(data)=>{
+  setScore(data);
+}
+const handleWicket=(data)=>{
+  setWicket(data);
+}
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+   
+    <h1 className='Title'>Score Keeper</h1>
+    <ScoreCard scoreData={score} wicketData={wicket}/>
+    <ScoreButton onScoreChange={handleScore} onWicketChange={handleWicket} curScore={score} curWicket={wicket}/>
+    <CommentryBox />
     </div>
+    
+   
   );
 }
 
